@@ -1,0 +1,26 @@
+<div class="container_f">
+<div class="form-container">
+
+<form method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+
+{% for fields in form %} 
+    <div class="mb-3">
+    <label for="" class="form-label">{{ fields.label }}</label>
+     {{ fields }}
+    </div>
+{% endfor %}
+
+{% if error %}
+
+<h1><p style="color: red;">{{ error }}</p></h1>
+
+{% endif %}
+
+<input type="submit" value="submit" class="btn btn-primary">
+    
+    
+</form>
+</div>
+</div>
+

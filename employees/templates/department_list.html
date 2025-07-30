@@ -1,0 +1,31 @@
+{% extends 'emp_main.html' %}
+{% block title %}Department List{% endblock title %}
+{% block content %}
+<div class="container mt-3">
+    <h1 style="text-align: center;">Department</h1>
+    <br>
+
+    <table class="table table-striped table-hover">
+  <thead class="table-danger">
+    <tr>
+      <th scope="col">Sr. No.</th>
+      <th scope="col">Name</th>
+      <th scope="col">Location</th>
+      <th scope="col">Action</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+ <tbody>
+    {% for department in departments %}
+        <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{{ department.dname }}</td>
+        <td>{{ department.d_location }}</td>
+        <td><button><a href="{% url 'update-department' department.id %}">Update</a></button></td>
+        <td><button><a href="{% url 'delete-department' department.id %}">Delete</a></button></td>
+        </tr>
+    {% endfor  %}
+ </tbody>
+</table>
+</div>
+{% endblock content %}

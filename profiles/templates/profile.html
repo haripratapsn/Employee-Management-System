@@ -1,0 +1,55 @@
+{% extends 'emp_main.html' %}
+{% block title %}{{ request.user.username }} Profile{% endblock title %}
+
+
+
+{% block content %}
+<div class="container py-5">
+  <div class="card profile-card mx-auto">
+
+    <div class="card-body text-center">
+
+      <!-- Top actions -->
+      <div class="d-flex gap-2 justify-content-end profile-actions mb-3">
+        <a href="{% url 'update-employee-profile' employee.id %}" class="btn btn-primary">
+          <i class="bi bi-pencil-square me-1"></i> Update
+        </a>
+        <a href="{% url 'delete-employee-profile' employee.id %}" class="btn btn-outline-danger">
+          <i class="bi bi-trash me-1"></i> Delete
+        </a>
+      </div>
+
+      <!-- Avatar -->
+      <img src="{{ employee_profile.image.url }}" alt="Profile Picture" class="profile-img mb-3">
+
+      <!-- Basic Info -->
+      <h3 class="mb-1">{{ employee.ename }}</h3>
+      <p class="text-muted small fw-medium mb-3">
+        Dept&nbsp;•&nbsp;{{ employee.dept.dname }} &nbsp;|&nbsp; Age&nbsp;•&nbsp;{{ employee.age }}
+      </p>
+
+      <!-- Bio -->
+      <p class="mb-4">{{ employee_profile.bio }}</p>
+
+      <!-- Contact -->
+      <div class="text-start small mb-4">
+        <p class="mb-1"><strong>Email:</strong> {{ employee.email }}</p>
+        <p class="mb-1"><strong>Phone:</strong> {{ employee_profile.phone_no }}</p>
+        <p class="mb-0"><strong>Address:</strong> {{ employee.address }}</p>
+      </div>
+
+      <!-- Resume button -->
+      <a href="{{ employee_profile.resume.url }}" class="btn btn-outline-primary" download>
+        <i class="bi bi-download me-1"></i> Download Resume
+      </a>
+
+      <!-- Social -->
+      <div class="mt-3">
+        <a href="{{ employee_profile.linkedin }}" class="btn btn-link btn-linkedin fw-semibold" target="_blank">
+          <i class="bi bi-linkedin me-1"></i> LinkedIn
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

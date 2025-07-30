@@ -1,0 +1,69 @@
+    {% extends "emp_main.html" %}
+    {% block title %}Update {{ employee.ename }} Profile{% endblock title %}
+
+
+    {% block content %}
+    <div class="container py-5">
+    <h1 class="text-center mb-3">Update Employee Profile</h1>
+    <h2 class="text-center text-secondary mb-4">{{ employee.ename }}</h2>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+        <div class="card shadow-sm">
+            <div class="card-body">
+
+            <form method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+                {% csrf_token %}
+
+                <!-- Employee name (read‑only) -->
+                <div class="mb-3">
+                <label class="form-label">Employee</label>
+                <input type="text" class="form-control" value="{{ employee.ename }}" disabled>
+                </div>
+            
+                <!-- Profile Image -->
+                <div class="mb-3"  >
+                <label class="form-label">Current Picture</label><br>
+                <img src="{{ employee_profile.image.url }}"
+                    class="img-thumbnail mb-2"
+                    style="max-width: 150px;"
+                    alt="{{ employee.ename }}">
+                </div>
+
+                        
+                <!-- New Resume  -->
+                    <div class="mb-3">
+                <label class="form-label">Current Resume</label><br>
+                <a href="{{ employee_profile.resume.url }}" 
+                    class="btn btn-outline-secondary btn-sm" 
+                    target="_blank" 
+                    download>
+                    Download Old Resume
+                </a>
+                </div>
+                
+                {% for fields in form %}
+                <div class="mb-3">
+                <label for="" class="form-label">{{ fields.label }}</label>
+                {{ fields }}
+                    </div>  
+                {% endfor %}
+
+                {% if error %}
+                <div class="alert alert-danger text-center">{{ error }}</div>
+                {% endif %}
+
+                <!-- Submit -->
+                <button type="submit" class="btn btn-primary w-100">Save Changes</button>
+            </form>
+
+            </div>
+        </div>
+
+        </div>
+    </div>
+    </div>
+
+
+    {% endblock content %}

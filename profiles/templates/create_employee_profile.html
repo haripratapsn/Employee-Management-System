@@ -1,0 +1,13 @@
+{% extends 'emp_main.html' %}
+
+{% block title %}Add Employee Profile{% endblock title %}
+
+
+{% block content %}
+<br>
+<h1 style="text-align: center;">Create Employee Profile</h1>
+<h1 align="center">{{ employee.ename }}</h1>
+
+{% include 'profile_forms.html' %}
+
+{% endblock content %}

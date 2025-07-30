@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> {% block title %} {% endblock title %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <style>
+.profile-img{
+        width:160px;                /* pick one size */
+        height:160px;
+        object-fit:cover;
+        border-radius:50%;
+        border:4px solid #fff;
+        box-shadow:0 0 .75rem rgba(0,0,0,.15);
+      }
+
+      /* Shared flex container for forms/centres */
+      .container_f{
+        min-height:50vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        padding:2rem 1rem;
+      }
+
+      /* Login / register card */
+      .form-container{
+        width:100%;
+        max-width:480px;
+        background:#fff;
+        padding:2rem 2.5rem;
+        border:1px solid #e9ecef;
+        border-radius:.75rem;
+        box-shadow:0 8px 24px rgba(0,0,0,.08);
+      }
+
+      /* Employee profile card */
+      .profile-card{
+        max-width:600px;
+        border:none;
+        border-radius:1.25rem;
+        box-shadow:0 0.25rem 1rem rgba(0,0,0,.08);
+        overflow:hidden;
+      }
+
+      /* Headings */
+      h3{font-weight:600;}
+
+      /* Pill‑style action buttons */
+      .profile-actions .btn{
+        --bs-btn-padding-x:1.25rem;
+        --bs-btn-padding-y:.5rem;
+        border-radius:2rem;
+        font-size:.875rem;
+      }
+
+      /* LinkedIn link colour */
+      .btn-linkedin{color:#0a66c2;}
+      .btn-linkedin:hover,
+      .btn-linkedin:focus{
+        color:#084d9a;
+        text-decoration:none;
+      }
+
+      /* Resume button rounded */
+      .btn-outline-primary{border-radius:1.5rem;}
+
+      /* Narrow phones: card side padding */
+      @media (max-width:576px){
+        .profile-card{margin-inline:1rem;}
+    }
+        </style>
+</head>
+<body>
+
+    {% include 'nav.html' %}
+    {% block content %}
+
+    {% endblock content %}
+
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+
+</body>
+</html>

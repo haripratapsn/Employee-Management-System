@@ -1,0 +1,48 @@
+{% extends 'emp_main.html' %} 
+
+{% block title %}Dashboard{% endblock title %}
+
+{% block content %}
+
+<div class="container py-4">
+  <h2 class="mb-4 text-center">Employee Management Dashboard</h2>
+
+  <div class="row g-4">
+
+    <!-- Manage Employees -->
+    <div class="col-md-4">
+      <a
+        href="{% url 'employee-list' %}"
+        class="dashboard-card link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0"
+      >
+        <div class="card text-white bg-primary h-100">
+          <div class="card-body">
+            <h5 class="card-title">Manage Employees</h5>
+            <p class="card-text display-6">{{ emp_count }}</p>
+            <p class="card-text">Click to view all employees</p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Manage Departments -->
+    <div class="col-md-4">
+      <a
+        href="{% url 'department-list' %}"
+        class="dashboard-card link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0"
+      >
+        <div class="card text-white bg-success h-100">
+          <div class="card-body">
+            <h5 class="card-title">Manage Departments</h5>
+            <p class="card-text display-6">{{ dept_count }}</p>
+            <p class="card-text" >Click to view all departments</p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+
+    </div>
+  </div>
+</div>
+{% endblock content %}
