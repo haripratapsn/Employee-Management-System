@@ -1,0 +1,33 @@
+{% extends "auth_main.html" %}
+{% block title %} {% endblock title %}
+{% block content %}
+
+<h1>Signup User</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+
+        <label for="">User Name</label><br>
+        <input type="text" name="un" id=""><br>
+        <br>
+
+        <label for="">Password</label><br>
+        <input type="password" name="pw1" id=""><br>
+        <br>
+        <label for="">Confirm Password</label><br>
+        <input type="password" name="pw2" id=""><br>
+        <br>
+        <input type="submit" value="Signup">
+    </form>
+    {% if error %}
+    <p style="color: red;"><h4>{{ error }}</h4></p>
+    {% endif %}
+    
+
+</div>
+
+
+
+{% endblock content %}
+
+
+
