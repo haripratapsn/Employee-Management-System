@@ -1,37 +1,60 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
   <div class="container-fluid">
-
-    <a class="navbar-brand" href="">EMS</a>
-
-
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand" href="{% url 'dashboard' %}">EMS</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-
-
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'dashboard' %}">Dashboard</a>
-        </li>
-       
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'create-department' %}">Add-Department</a>
-        </li>
+        {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="{% url 'dashboard' %}">Dashboard</a>
+          </li>
 
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'create-employee' %}">Add-Employee</a>
-        </li>
-  
-      
+          {% if user.is_superuser %}
+            <!-- Show admin-only links -->
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'create-department' %}">Add Department</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'create-employee' %}">Add Employee</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'department-list' %}">View Departments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'employee-list' %}">View Employees</a>
+            </li>
+          {% elif user.is_staff %}
+            <!-- Show staff-level links, e.g., HR, Managers -->
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'department-list' %}">View Departments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'employee-list' %}">View Employees</a>
+            </li>              
+          {% else %}
+            <!-- Regular employee links -->
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'employee-list' %}">My Profile</a>
+            </li>
+          {% endif %}
+
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+          </li>
+
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'signup' %}">Signup</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'login' %}">Login</a>
+          </li>
+        {% endif %}
       </ul>
-
-      <!-- <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form> -->
 
     </div>
   </div>

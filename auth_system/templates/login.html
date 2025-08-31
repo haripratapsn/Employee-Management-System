@@ -5,16 +5,14 @@
 <h1>Login User</h1>
     <form action="" method="POST">
         {% csrf_token %}
+        {{ form }}
 
-        <label for="">User Name</label><br>
-        <input type="text" name="un" id=""><br>
-        <br>
-
-        <label for="">Password</label><br>
-        <input type="password" name="pw" id=""><br>
-        <br>
-
-        <input type="submit" name="submit" id="" value="Login"><br>
+        <input type="submit" name="submit" id="" value="Login"> <br>
+        <p>If you dont have a account!!</p>
+        <button ><a href="{% url 'signup' %}">Signup</a></button>
+        {% if request.GET.next %}
+        <input type="hidden" name="next" value="{{ request.GET.next }}">
+        {% endif %}
 
     </form>
     {% if error %}

@@ -7,6 +7,7 @@
 <div class="container py-4">
   <h2 class="mb-4 text-center">Employee Management Dashboard</h2>
 
+  {% if user.is_authenticated %}
   <div class="row g-4">
 
     <!-- Manage Employees -->
@@ -45,4 +46,9 @@
     </div>
   </div>
 </div>
+  {% else %}
+  <p> <h1>Welcome Please Login</h1></p>
+
+{% endif %}
+
 {% endblock content %}
